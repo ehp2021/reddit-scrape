@@ -17,6 +17,11 @@ import numpy as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 # REDDIT SCRAPE START
 
 # https://praw.readthedocs.io/en/stable/
@@ -25,9 +30,11 @@ import praw
 # Reddit API Setup: https://www.reddit.com/prefs/apps
 user_agent = "scraper 1.0 by /u/Coconuts2018"
 
+client_id = os.getenv("REDDIT_CLIENT_ID")
+client_secret = os.getenv("REDDIT_CLIENT_SECRET")
 reddit = praw.Reddit(
-    client_id="nH5wWYzFtSs1mFY9iOIDCA",
-    client_secret="VAfr3qRhhlOX_cXx-Fykbd6nH4vOPQ",
+    client_id=client_id,
+    client_secret=client_secret,
     user_agent=user_agent,
     check_for_async=False
 )
